@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //QUESTION 1 SOLUTION
+
+        class restaurantManager{
+         restaurant=[{'name':'olivia','address':'183 D, Civil Lines, Boundary Road, Meerut, Uttar Pradesh 250001','city':'Meerut'},
+         {'name':'The Yellow Chilli','address':'Sunrise Tower, 267/1 & 269/1, First Floor, Mangal Pandey Nagar, Meerut, Uttar Pradesh 250004','city':'Meerut'},
+         {'name':'Tamra Restaurant','address':'Level 1 Shangri-La Eros New Delhi, 19, Ashoka Rd, Connaught Place, New Delhi, Delhi 110001','city':'Delhi'},
+         {'name':'The Qube','address':'Diplomatic Enclave, Chanakyapuri, New Delhi, Delhi 110023','city':'Delhi'}];
+
+            printAllRestaurantNames(){
+                for(let i=0;i<4;i++){
+                    console.log(this.restaurant[i].name+"\n");
+                }
+            }
+            
+        }
+
+        //part a
+
+        var names=new restaurantManager();
+        names.printAllRestaurantNames();
+
+        //part b
+
+        function filterMeerut(restaurant){
+                return restaurant.city=='Meerut';
+            }
+        
+        var fr=names.restaurant.filter(filterMeerut)
+        console.log(fr);
+
+        function filterDelhi(restaurant){
+                return restaurant.city=='Delhi';
+            }
+        
+        var fr2=names.restaurant.filter(filterDelhi)
+        console.log(fr2);
+
+
+        //QUESTION 2 SOLUTION
+
+        orderData={
+            'below 500':20,
+            '500-1000':29,
+            '1000-1500':30,
+            '1500-2000':44,
+            'above 2000':76
+        };
+
+        //part a
+
+        var sum=0;
+        for(i in orderData){
+            sum+=orderData[i];
+        }
+        console.log("total number of orders placed= "+sum);
+
+        //part b
+        console.log("number of order proportion option= "+Object.keys(orderData).length);
+        
+        //part c
+
+        function calpercentage(value){
+            return (value/sum)*100;
+        }
+
+       
+        function percentage(orderData){
+            var count=1;
+            var mapData=[];
+            for(n in orderData){
+                var obj={
+                    id:count,
+                    order:n,
+                    order_percentage:calpercentage(orderData[n]),
+                    restaurant:"Punjabi Tadka"
+                }
+                count++;
+                mapData.push(obj);
+            }
+            return mapData;
+        }
+
+        console.log(percentage(orderData));
+    </script>
+</body>
+</html>
